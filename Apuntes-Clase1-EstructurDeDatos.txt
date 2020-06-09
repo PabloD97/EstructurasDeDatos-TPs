@@ -1,0 +1,174 @@
+Tipos Baisco.
+
+Bool -> "True" o "False"
+
+Char -> 'caracteres'( de esta forma se escriben los caracteres en haskell)
+
+Numeros -> Int(intenger,float,double,..) * vamos a usar mas que nada int(integer)
+
+
+Forma de preguntarle a haskell que tipo es algo.
+:t -> esto denota el tipo de algo. Ej:" :t True = Bool"
+
+-Solo existen 2 tipos de valores en haskel "True" o "False"
+
+Como declarar el tipo de una variable "variable :: Integer"
+
+Operaciones logicas:
+
+a || b -> or
+a && b -> and
+not a  -> not
+
+Operaciones relacionales
+
+a == b
+a < b
+a <= b
+a > b
+a >= b
+a /= b
+
+* Por ahora solo comparamos letras con letras y numeros con numeros
+
+Operaciones aritmeticas
+
+a + b
+a - b
+a * b
+div a b Parcial (no es total) *A veces puede fallar
+mod a b Parcial (no es total)
+
+Problema de las pizzas.
+
+porcionesPorPizza = 8
+
+gramosDeHarinaPorPizza = 250
+
+*porcionesTotales es una funcion*
+* para declarar el tipo de una funciones, debemos escribir el tipo de los parametros que recibe, y el tipo de parametro que retorna * 
+
+porcionesTotales :: Integer -> Integer -> Integer * asi se declara una funcion en haskell *
+
+porcionesTotales invitados porcionesPorInvitados = invitados * porcionesPorInvitados (esto es lo mismo a escribir porcionesTotales(n,m){ return (n*m) } 
+
+
+Como realizar comentarios en haskell "--  Comentario" o asi "{- comentario -}"
+
+FUNCIONES
+
+	definir valores constantes a = 1 * a nunca va cambiar de valor, siempre va ser 1
+
+
+Cuando debo colocar parentesis. Cuando a una funcion le paso como parametro otra funcion. EJ:    g 12 False 'z' 19
+		f (g 12 False 'z' 19)
+
+Orden de presedencia
+
+escribir esto f x + y = (f x) + y 
+
+Parte 4
+Alternativa condicional(if) y sinonimos de tipo
+
+*if es una expresion*
+
+minimo x y = if x < y 
+		then x
+		else y
+
+Siempre que se escribe el if tiene que tener un else
+
+If tiene 3 partes. La primera debe ser un bool, las demas pueden ser cualquier cosa(char,int) pero deben ser del mismo tipo.
+
+Se pueden anidar if. Ej: minimo3 :: Integer -> Integer -> Integer
+			 minimo3 x y z =
+				if x < y
+					then (if x < z
+						then x)	
+
+
+Sinonimos de tipo
+En haskell es posible definir alias o sinonimo para un tipo, usando una declaracion como la siguiente: 
+
+	type(es una palabra clave de haskell) Edad = Int
+
+
+Parte 5 : Pares, Polimorfismo, Pattern matching
+
+Pares. En haskell podemos trabjar con pares de elementos
+
+Ej. 
+	* esto es un par (.. , ..)	
+	origen :: (Int, Int) * este es un par de tipo integer, integer
+	origen = (0,0) * pueden ser de distintos tipos*
+
+	el par (1,2) /= (2,1)
+
+Los pares tambien tienen operaciones: 
+	1. fst - devuelve la primera componente de un par
+	2. snd - devuelve la segunda componente de un par
+
+le puedo preguntar a haskell cual es el tipo de la primera componente
+
+Ej. :t fst (1,2)
+    fst (1,2) :: Char
+
+el tipo de se declara asi " fst :: (a, b) -> a "
+lo mismo para snd :: (a,b) -> b
+
+FUNCIONES SOBRE PARES:
+
+Vamos a usar ambas, asi que a usar las 2
+
+Como dar vuelta el par con fst y snd 
+	dadoVuelta p = (snd p, fst p)
+
+Patter matching
+Como dar vuelta el par version2 
+	dadoVueltaV2 (x,y) = (y,x)
+
+f :: (a, (b, c)) -> ((a,b) , c) * esta funcion es polimorfica, no importa de que tipo sean los componentes, siempre va funcionar *  
+f p= ( (fst p, fst( snd p) ) , snd(snd p) )
+
+
+Parte 6
+
+Tipos enumerativos ->  tiene un numero finitos de valores, cada uno de los cuales tiene un unico constructor
+
+Ejemplo.
+
+data Simpson = Homero | Marge | Bart | Lisa | Maggie
+
+otro ejemplo serian los meses, que tienen 12 valores posibles.
+
+
+Funcion Madre
+
+
+
+
+data secuenciaDeCeldas = sec [celda] -- representa la lista de celdas anteriores a la actual
+ 		celda -- en esta celda esta ubicado el cabezal
+ [celda] esta seria la siguiente celda a la actual
+
+
+data Dir = Izd | Der -- indica en que direcciones nos podemos mover
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
