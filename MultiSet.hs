@@ -44,13 +44,17 @@ ocurrencesMS a (ElMultiSet dict) =
 
 -- Dados dos multiconjuntos devuelve un 
 -- multiconjunto con todos los elementos de ambos
--- multiconjuntos.
+{-- multiconjuntos.
 unionMS :: Ord a => MultiSet a -> MultiSet a -> MultiSet a
 unionMS (ElMultiSet dict1) (ElMultiSet dict2) = 
 	ElMultiSet $ agregarTodos (domM dict1) dict1 dict2
  
+
+
+
+
+
  agregarTodos ::Ord a => [a] -> Map a Int -> Map a Int -> Map a Int
- agregarTodos [] _ dict2 = dict2
  agregarTodos (k:ks) dict1 dict2 =
  	let cantidad = fromJust (lookupM k dict1) in 
  	let rRecursivo = agregarTodos ks dict1 dict2 in
@@ -67,3 +71,5 @@ fromJust (Just v) = v
 --todos los elementos del conjunto y su cantidad
 --de ocurrencias.
 -- multiSetToList :: MultiSet a -> [(a, Int)]
+
+-}
