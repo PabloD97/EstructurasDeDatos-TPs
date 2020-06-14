@@ -68,6 +68,7 @@ multiSetToList (MulSet dicc) =
 	armarParConOcurrencias (domM dicc) dicc 
 
 armarParConOcurrencias :: [k] -> Map a Int -> [(a,Int)]
+armarParConOcurrencias [] dicc = []
 armarParConOcurrencias (k:ks) dicc = 
 	(k, (fromJust (lookupM k dicc ))) :
 	 armarParConOcurrencias ks dicc
