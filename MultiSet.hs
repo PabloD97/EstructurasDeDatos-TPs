@@ -63,5 +63,11 @@ fromJust (Just v) = v
 --Dado un multiconjunto devuelve una lista con 
 --todos los elementos del conjunto y su cantidad
 --de ocurrencias.
--- multiSetToList :: MultiSet a -> [(a, Int)]
+multiSetToList :: MultiSet a -> [(a, Int)]
+multiSetToList (MulSet dicc) =
+	armarParConOcurrencias (domM dicc) dicc 
 
+armarParConOcurrencias :: [k] -> Map a Int -> [(a,Int)]
+armarParConOcurrencias (k:ks) dicc = 
+	(k, (fromJust (lookupM k dicc ))) :
+	 armarParConOcurrencias ks dicc
