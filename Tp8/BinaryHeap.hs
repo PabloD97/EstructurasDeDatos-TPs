@@ -5,7 +5,10 @@ module BinaryHeap(
 	insertH,
 	findMin,
 	deleteMin,
+<<<<<<< HEAD
 	splitAtPos
+=======
+>>>>>>> a72d12bfd18a62ee7e753d0821bfd376cbea48ac
  )
 where
 
@@ -122,15 +125,16 @@ hundirT (r, t) = hundirElem r t
 -- devuelve un arbol completo y heap
 -- Eficiencia: O(log n)
 hundirElem :: Ord a => a -> Tree a -> Tree a
-hundirElem r EmptyT 		 = NodeT r EmptyT EmptyT  -- COMPLETAR
+hundirElem r (NodeT x EmptyT EmptyT)= NodeT r EmptyT EmptyT  -- COMPLETAR
 hundirElem r (NodeT x ti td) = 
 	if (isEmptyT ti && isEmptyT td)
-		then NodeT r ti td
+		then NodeT r EmptyT EmptyT
 		else if root ti < r 
-				then NodeT (root td) ti (hundirElem r td)  
-				else NodeT (root ti) (hundirElem r ti) td
+				then NodeT (root ti) (cambiarRoot r ti) td
+				else NodeT (root td) ti (cambiarRoot r td)
 
-
+cambiarRoot :: a -> Tree a -> Tree a
+cambiarRoot a (NodeT x ti td) = NodeT a ti td
 -- hundirElem r EmptyT = ...
 -- hundirElem r (NodeT x ti td) = ...
 

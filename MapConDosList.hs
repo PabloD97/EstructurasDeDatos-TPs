@@ -2,6 +2,7 @@
 
 data Map k v = UnMap [k] [v]
 
+
 emptyM :: Map k v
 emptyM = UnMap [] []
 
@@ -15,3 +16,4 @@ remplazaOAgregar key value [] _ =
 	([key],[value])
 remplazaOAgregar key value (k:ks) (v:vs) =
 	
+

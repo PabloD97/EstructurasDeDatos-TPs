@@ -11,6 +11,9 @@ data Tree a = EmptyT | NodeT a (Tree a) (Tree a)
 -- 3) ti y td son BST
 -- 4) Opcional: no hay elementos repetidos
 
+arbolInt:: Tree Int
+arbolInt = NodeT 8 (NodeT 4 EmptyT EmptyT) (NodeT 13 EmptyT EmptyT) 
+
 -- Prec.: el arbol es BST
 -- Eficiencia: O(log n)
 perteneceBST :: Ord a => a -> Tree a -> Bool
@@ -46,23 +49,12 @@ insertT e (NodeT x ti td) =
 	   	       then NodeT x (insertT e ti) td
 	   	       else NodeT x ti (insertT e td)
 
--- insertT 20 (insertT 10 (insertT 5 (insertT 15 EmptyT)))
--- NodeT 15 
---     (NodeT 5
---     	EmptyT 
---     	(NodeT 10 
---     		EmptyT
---     		EmptyT))
---     (NodeT 20 
---     	EmptyT 
---     	EmptyT)
+root :: Tree a -> a
+root (Nodet a ti td) = a
 
--- NodeT 4 
---    (NodeT 3 
---    	  (NodeT 2 
---    	  	(NodeT 1 
---    	  		EmptyT
---    	  		EmptyT) 
---    	  	EmptyT) 
---    	  EmptyT) 
---    EmptyT
+
+-- Dado un BST borra un elemento
+-- en el arbol
+deleteBST :: Ord a => a -> Tree a -> Tree a
+deleteBST a (NodeT x ti td) =
+	
