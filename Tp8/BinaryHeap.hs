@@ -4,7 +4,8 @@ module BinaryHeap(
 	isEmptyH,
 	insertH,
 	findMin,
-	
+	deleteMin,
+	splitAtPos
  )
 where
 
