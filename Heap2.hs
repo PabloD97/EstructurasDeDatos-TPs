@@ -9,7 +9,7 @@ module Heap2(
  )
 where
 
-data Heap a = H [a]
+data Heap a = H [a] deriving Show
 
 -- Inv. Rep.:
 -- La lista está ordenada
@@ -42,13 +42,6 @@ insertOrd e (x:xs) =
 	if e > x
 	   then x : insertOrd e xs
 	   else e : x : xs
-
--- 8
--- [1,5,7,10,11,12]
-
--- ->
-
--- [1,5,7,8,10,11,12]
 
 -- Encuentra el minimo elemento en la heap
 -- Eficiencia: O(1)

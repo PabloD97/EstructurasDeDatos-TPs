@@ -9,7 +9,7 @@ module Heap1(
  )
 where
 
-data Heap a = H [a]
+data Heap a = H [a] deriving Show
 
 -- Inv. Rep.:
 -- ?
