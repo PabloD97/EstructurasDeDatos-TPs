@@ -53,13 +53,31 @@ add e (MKR n dicc h) = MKR (n+1) (assocM n e dicc) (insertH e h)
 -- g) 
 -- Propósito: transforma una RAList en una lista, 
 -- respetando el orden de los elementos.
--- Eficiencia: O(N log N). 
-{-elems :: Ord a => RAList a -> [a]
+{-- Eficiencia: O(N log N). 
+elems :: Ord a => RAList a -> [a]
 elems (MKR n dicc h) =
-	if n < 0
-		then []
-		else get n dicc : elems (MKR (n-1) (dicc) (h))   
+	mapToList n dicc
+
+mapToList :: Int -> Map Int v -> [v]
+mapToList n dicc =
+	if n > 0
+		then fromJust( lookupM n dicc) : (mapToList (n-1) dicc) 
+		else [fromJust(lookupM n dicc)]
 -}
+elems :: Ord a => RAList a -> [a]
+elems (MKR n map heap) =
+    mapToList (n-1) map
+
+-- eficiencia O(n)
+mapToList :: Int-> Map Int v -> [v]
+mapToList n map =
+    if n > 0
+        then fromJust(lookupM n map) : (mapToList (n-1) map)
+        else [fromJust(lookupM n map)]
+
+
+ral = add "hola"  $ add "como" $ add "estas" $ add "bro" emptyRAL
+
 
 -- h) 
 -- Propósito: elimina el último elemento de la lista.
@@ -67,4 +85,25 @@ elems (MKR n dicc h) =
 -- Eficiencia: O(N log N).
 remove :: Ord a => RAList a -> RAList a
 remove (MKR n dicc h) = 
-	MKR (n-1) (deleteM n dicc) h
+	MKR (n-1) (deleteM (n-1) dicc)
+	( listToHeap ( sinElem (fromJust (lookupM (n-1) dicc) ) (heapToList h ) )
+	)
+
+
+listToHeap :: Ord a => [a] -> Heap a
+listToHeap [] = emptyH
+listToHeap (x:xs) =
+	insertH x (listToHeap xs)
+
+heapToList :: Ord a => Heap a -> [a]
+heapToList h = 
+	if isEmptyH h 
+		then [] 
+		else findMin h : heapToList (deleteMin h)
+
+sinElem :: Ord a => a -> [a] -> [a]
+sinElem a [] = []
+sinElem a (x:xs) =
+	if a == x 
+		then xs
+		else x : (sinElem a xs) 
