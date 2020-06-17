@@ -14,8 +14,7 @@ emptyRAL = MKR 0 emptyM emptyH
 -- Propósito: indica si la lista está vacía.
 -- Eficiencia: O(1).
 isEmptyRAL :: RAList a -> Bool
-isEmptyRAL (MKR 0 dicc h) = True
-isEmptyRAL (MKR n dicc h) = False
+isEmptyRAL (MKR n dicc h) = n == 0
 
 -- c) 
 -- Propósito: devuelve la cantidad de elementos.
@@ -53,17 +52,8 @@ add e (MKR n dicc h) = MKR (n+1) (assocM n e dicc) (insertH e h)
 -- g) 
 -- Propósito: transforma una RAList en una lista, 
 -- respetando el orden de los elementos.
-{-- Eficiencia: O(N log N). 
-elems :: Ord a => RAList a -> [a]
-elems (MKR n dicc h) =
-	mapToList n dicc
+-- Eficiencia: O(N log N). 
 
-mapToList :: Int -> Map Int v -> [v]
-mapToList n dicc =
-	if n > 0
-		then fromJust( lookupM n dicc) : (mapToList (n-1) dicc) 
-		else [fromJust(lookupM n dicc)]
--}
 elems :: Ord a => RAList a -> [a]
 elems (MKR n map heap) =
     mapToList (n-1) map
