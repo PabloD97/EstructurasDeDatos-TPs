@@ -1,18 +1,5 @@
 
 
--- nuevaB :: Int -> Boleteria — recibe un n´umero n y 
--- devuelve una boleter´ıa vac´ıa con n ventanillas.
-
--- llegarB :: Boleteria -> Boleteria — registra la 
--- llegada de una persona a la boleter´ıa. La persona se ubica
--- sobre la ventanilla que actualmente tenga menos gente esperando. 
--- En caso de empate se ubica en cualquiera de las
--- de menor longitud.
-
--- longitudFilaB :: NroVentanilla -> Banco -> Int — devuelve la 
--- longitud actual de la fila de gente esperando
--- en la ventanilla indicada.
-
 -- A medida que la gente llega, se ubica en la ventanilla con menos
 -- gente
 type NroVentanilla = Int
@@ -45,12 +32,23 @@ heapConNPares nroVen heap =
 -- .La persona se ubica sobre la ventanilla que actualmente
 -- tenga menos gente esperando. En caso de empate se ubica en cualquiera de las
 -- de menor longitud.
+-- Eficiencia O(log m + log n)
 llegarB :: Boleteria -> Boleteria
-llegarB 
+llegarB (B diccV heap) = 
+	B (assocM (snd (findMin heap)) (1 + (fst(findMin heap))) diccV)
+	  ( actualizarH heap )
+
+actualizarH :: Heap (Int, NroVentanilla) -> Heap (Int, NroVentanilla)
+actualizarH heap =
+	insertH ((fst(findMin (heap)) + 1) (snd(findMin heap))) (deleteMin heap)
 
 
+-- Devuelve la longitud actual de la fila de gente esperando
+-- en la ventanilla indicada
+-- Eficiencia O(log n)
+longitudFilaB :: NroVentanilla -> Boleteria -> Int
+longitudFilaB nroV (B diccV heap) = 
+	fromJust (lookupM nroV diccV)
 
-
-
-
-longitudFilaB.
+fromJust :: Maybe a -> a
+fromJust (Just a)   = a
