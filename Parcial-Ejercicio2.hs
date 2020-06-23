@@ -1,0 +1,3 @@
+-- nuevoT :: Texto — crea un texto vac´ıo.
+-- letraT :: Texto -> Char -> Texto — ingresa una letra.
+-- espacioT :: Texto -> Texto — ingresa un espacio
