@@ -1,0 +1,21 @@
+true  	 = 1
+false 	 = 0
+
+negacion = !
+
+or	 = ||
+
+el main siempre devuelve un int
+
+esta mal declarar 2 veces una variable
+
+el if puede no tener else
+
+los int,chars y bool se representan con numeros enteros
+
+Registros Sintaxis: declaracion de un registro
+
+struct Coordenada {
+	int x;
+	int y;
+};

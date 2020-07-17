@@ -5,6 +5,7 @@ type Cantidad = Int
 
 data ListaCompras = Vacia | Agregar Rubro Cantidad Descripcion ListaCompras
 
+-- Eficiencia O(n)
 totalDelRubro :: Map Descripcion Int -> ListaCompras -> Rubro -> Int
 totalDelRubro diccPrecios Vacia rubroF 							     = 0
 totalDelRubro diccPrecios (Agregar rubro cant descripcion lc) rubroF = 
