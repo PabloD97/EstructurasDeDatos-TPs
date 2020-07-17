@@ -25,7 +25,7 @@ Elem sacarElUltimo(Lista l);
 
 // Hacer estos puntos
 void agregarIesimoL(Lista l, Elem x, int i);
-Elem sacarIesimoL(Lista l, int i);
+//Elem sacarIesimoL(Lista l, int i);
 
 
 // Eficiencia: O(1)
@@ -55,5 +55,10 @@ Lista longitudes(Lista* listas, int lengthLs);
 Lista* lasDeLongitudMayorA(int filtro, Lista* ls);
 
 Lista intercalar(Elem e, Lista l);
+
+Lista append(Lista l1, Lista l2);
+
+Lista aplanar(Lista* listas, int longitud);
+
 
 #endif

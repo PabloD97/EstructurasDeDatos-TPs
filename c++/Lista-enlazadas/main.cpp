@@ -7,34 +7,34 @@ int main(){
 
     Lista l = vaciaL() ;
     agregarAlPrincipio(l,20);
-    agregarAlPrincipio(l,10);
-    agregarAlPrincipio(l,0);
     agregarAlPrincipio(l,20);
-    agregarAlPrincipio(l,2);
     agregarAlPrincipio(l,20);
 
-    cout<< "longitud de la lista: " << longitudL(l) << endl;
+    agregarAlPrincipio(l,20);
+    agregarAlPrincipio(l,20);
+    agregarAlPrincipio(l,20);
 
-    agregarAlFinalL(l,50);
+   // cout<< "longitud de la lista: " << longitudL(l) << endl;
 
+    //agregarAlFinalL(l,50);
 
+    Lista l2 = vaciaL();
+    agregarAlPrincipio(l2,5);
+    agregarAlPrincipio(l2,6);
+    agregarAlPrincipio(l2,7);
+    agregarAlPrincipio(l2,8);
 
-    Lista boleanos = vaciaL();
-    agregarAlPrincipio(boleanos, true);
-    agregarAlPrincipio(boleanos, true);
-    agregarAlPrincipio(boleanos, true);
-    agregarAlPrincipio(boleanos, false);
-    cout<< "los distintos a 20 son: " <<endl;
-    for(int i=0; i < 4; i++){
-        cout<< iesimoL( (losDistintosA(20,l)), i) <<endl;
+    Lista test = append(l,l2);
+
+    Lista* listas = new Lista;
+    listas[0] = test;
+
+//    Lista testAplanar = aplanar(listas, 2);
+
+    Lista ltest = listas[0];
+    for(int i = 0; i < longitudL( ltest ) ; i++){
+            cout<< iesimoL(ltest,i) <<endl;
     }
-
-    Lista* listas = new Lista[2];
-    listas[0] = l;
-    listas[1] = boleanos;
-    Lista r = longitudes(listas, 2);
-
-    cout<< iesimoL( (intercalar(7,l)), 0 ) <<endl;
 
 
     return 0;

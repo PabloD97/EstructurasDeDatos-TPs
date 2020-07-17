@@ -99,7 +99,24 @@ void destruirL(Lista l){
     }
     delete l;
 }
+/**
+void agregarIesimoL(Lista l, Elem x, int i){
 
+    if(i == 0 ){
+        agregarAlPrincipio(l,x);
+    }
+    else{
+
+        int contador = 0;
+
+
+        while(contador != i){
+            contador++;
+        }
+
+    }
+}
+**/
 /// Funciones de la practica 2 de haskell
 int sumatoria(Lista l){
     int res = 0;
@@ -243,11 +260,64 @@ Lista* lasDeLongitudMayorA(int filtro, Lista* ls, int lengthLs){
     return res;
 }
 
-Lista intercalar(Elem e, Lista l){/// Esta mal esto
+Lista intercalar(Elem x, Lista l){/// Esta mal esto
+
     ListaRepr* res    = vaciaL();
-    agregarIesimoL(res, 7,0);
+    Nodo* punteroNodo = l->primero;
+
+    for(int i = 0; i < l->sise  ; i++){
+
+        agregarAlPrincipio(res,x);
+        agregarAlPrincipio(res,punteroNodo->valor);
+        punteroNodo = punteroNodo->siguiente;
+
+    }
+    delete punteroNodo;
+    sacarElUltimo(res);
     return res;
 }
 
+Lista append(Lista l1, Lista l2){
 
+    Lista copia = vaciaL();
+    copia->primero = l1->primero;
+/*
+    Nodo* punteroNodo = l2->primero;
+
+    while(punteroNodo != NULL){
+        agregarAlFinalL(copia, punteroNodo->valor);
+        punteroNodo = punteroNodo->siguiente;
+    }
+    delete punteroNodo;
+ */ agregarAlPrincipio(copia, 1000);
+    return copia;
+}
+
+void agregarTodoDeList(Lista l, Lista todo){
+
+    Nodo* punteroNodo = todo->primero;
+
+    while(punteroNodo != NULL){
+
+        agregarAlFinalL(l, punteroNodo->valor);
+
+        punteroNodo = punteroNodo->siguiente;
+
+    }
+    delete punteroNodo;
+}
+
+Lista aplanar(Lista* listas, int longitud){
+
+    ListaRepr* res = vaciaL();
+
+    for(int i = 0; i < longitud ; i++){
+
+        ListaRepr* l = listas[i];
+        agregarTodoDeList(res, l);
+    }
+
+    return res;
+
+}
 
