@@ -60,5 +60,8 @@ Lista append(Lista l1, Lista l2);
 
 Lista aplanar(Lista* listas, int longitud);
 
+Lista reversa(Lista l);
+
+Lista zipMaximos(Lista l1, Lista l2);
 
 #endif

@@ -24,16 +24,23 @@ int main(){
     agregarAlPrincipio(l2,7);
     agregarAlPrincipio(l2,8);
 
-    Lista test = append(l,l2);
+    Lista l3 = vaciaL();
+    agregarAlPrincipio(l3,1);
+    agregarAlPrincipio(l3,1);
+    agregarAlPrincipio(l3,1);
+    agregarAlPrincipio(l3,1);
+
+    //Lista test = append(l,l2);
 
     Lista* listas = new Lista;
-    listas[0] = test;
+    listas[0] = l;
+    listas[1] = l2;
+    listas[2] = l3;
 
-//    Lista testAplanar = aplanar(listas, 2);
+    Lista reversita = reversa(l2);
 
-    Lista ltest = listas[0];
-    for(int i = 0; i < longitudL( ltest ) ; i++){
-            cout<< iesimoL(ltest,i) <<endl;
+    for(int i = 0; i < longitudL(l2) ; i++){
+        cout<< iesimoL(l2, i ) <<endl;
     }
 
 

@@ -277,11 +277,25 @@ Lista intercalar(Elem x, Lista l){/// Esta mal esto
     return res;
 }
 
+void agregarTodoDeList(Lista l, Lista todo){
+
+    Nodo* punteroNodo = todo->primero;
+
+    while(punteroNodo != NULL){
+
+        agregarAlPrincipio(l, punteroNodo->valor);
+
+        punteroNodo = punteroNodo->siguiente;
+
+    }
+    delete punteroNodo;
+}
+
 Lista append(Lista l1, Lista l2){
 
     Lista copia = vaciaL();
-    copia->primero = l1->primero;
-/*
+    agregarTodoDeList(copia, l1);
+
     Nodo* punteroNodo = l2->primero;
 
     while(punteroNodo != NULL){
@@ -289,23 +303,10 @@ Lista append(Lista l1, Lista l2){
         punteroNodo = punteroNodo->siguiente;
     }
     delete punteroNodo;
- */ agregarAlPrincipio(copia, 1000);
     return copia;
 }
 
-void agregarTodoDeList(Lista l, Lista todo){
 
-    Nodo* punteroNodo = todo->primero;
-
-    while(punteroNodo != NULL){
-
-        agregarAlFinalL(l, punteroNodo->valor);
-
-        punteroNodo = punteroNodo->siguiente;
-
-    }
-    delete punteroNodo;
-}
 
 Lista aplanar(Lista* listas, int longitud){
 
@@ -321,3 +322,27 @@ Lista aplanar(Lista* listas, int longitud){
 
 }
 
+
+Lista reversa(Lista ls){
+
+    Lista dadaVuelta  = vaciaL();
+    Nodo* punteroNodo = ls->primero;
+
+    while(punteroNodo != NULL){
+        agregarAlPrincipio(dadaVuelta, punteroNodo->valor);
+        punteroNodo = punteroNodo->siguiente;
+    }
+    return dadaVuelta;
+}
+
+/// No importa la longitud de las listas
+Lista zipMaximos(Lista l1, Lista l2){// continuar luego
+
+    Lista res = vaciaL();
+
+    Nodo* punteroNodo1 = l1->primero;
+    Nodo* punteroNodo2 = l2->primero;
+
+
+
+}
