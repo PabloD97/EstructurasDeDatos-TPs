@@ -25,23 +25,23 @@ int main(){
     agregarAlPrincipio(l2,8);
 
     Lista l3 = vaciaL();
+    agregarAlPrincipio(l3,9);
     agregarAlPrincipio(l3,1);
-    agregarAlPrincipio(l3,1);
-    agregarAlPrincipio(l3,1);
+    agregarAlPrincipio(l3,10);
     agregarAlPrincipio(l3,1);
 
-    //Lista test = append(l,l2);
+    Lista test = takeN(2,l2);
 
-    Lista* listas = new Lista;
-    listas[0] = l;
-    listas[1] = l2;
-    listas[2] = l3;
-
-    Lista reversita = reversa(l2);
-
-    for(int i = 0; i < longitudL(l2) ; i++){
-        cout<< iesimoL(l2, i ) <<endl;
+    for(int i = 0; i < longitudL(test); i++){
+        cout<< iesimoL(test,i) <<endl;
     }
+
+    cout<< "El menor de la lista es: " << minimun(test) << endl;
+
+    //destruirL(reversita);
+    destruirL(l);
+    destruirL(l2);
+    destruirL(l3);
 
 
     return 0;

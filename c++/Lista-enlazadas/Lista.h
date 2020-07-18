@@ -64,4 +64,16 @@ Lista reversa(Lista l);
 
 Lista zipMaximos(Lista l1, Lista l2);
 
+int promedio(Lista ls);
+
+int minimun(Lista ls);
+
+/***** Recursion sobre numeros ******/
+
+Lista factorial(int i);
+Lista cuentaRegresiva(int i);
+Lista contarHasta(int i);
+Lista replicar(int repit, Elem e);
+Lista takeN(int corte, Lista ls);
+Lista dropN(int corte, Lista ls);
 #endif

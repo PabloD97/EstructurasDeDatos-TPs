@@ -335,6 +335,17 @@ Lista reversa(Lista ls){
     return dadaVuelta;
 }
 
+Nodo* nodoNotNull(Nodo* n1, Nodo* n2){
+    Nodo* res;
+    if(n1 != NULL){
+        res=n1;
+    }
+    if(n2 != NULL){
+        res=n2;
+    }
+    return res;
+}
+
 /// No importa la longitud de las listas
 Lista zipMaximos(Lista l1, Lista l2){// continuar luego
 
@@ -343,6 +354,122 @@ Lista zipMaximos(Lista l1, Lista l2){// continuar luego
     Nodo* punteroNodo1 = l1->primero;
     Nodo* punteroNodo2 = l2->primero;
 
+    while(punteroNodo1 != NULL && punteroNodo2 != NULL ){
+        if( punteroNodo1->valor > punteroNodo2->valor  ){
+            agregarAlPrincipio(res, punteroNodo1->valor);
+        }
+        else{
+            agregarAlPrincipio(res, punteroNodo2->valor);
+        }
 
+        punteroNodo1 = punteroNodo1->siguiente;
+        punteroNodo2 = punteroNodo2->siguiente;
+    }
+
+    Nodo* resto = nodoNotNull(punteroNodo1,punteroNodo2);
+
+    while(resto != NULL){
+        agregarAlPrincipio(res, resto->valor);
+        resto = resto->siguiente;
+    }
+
+    return res;
+}
+
+int promedio(Lista ls){
+    return ( sumatoria(ls) / ls->sise );
+}
+
+int minimun(Lista ls){
+    int res = ls->primero->valor ;
+    Nodo* punteroNodo = ls->primero;
+
+    while(punteroNodo != NULL){
+        if(punteroNodo->valor < res){
+            res = punteroNodo->valor;
+        }
+        punteroNodo = punteroNodo->siguiente;
+    }
+    return res;
+}
+
+/***** Recursion sobre numeros ******/
+
+Lista factorial(int i){
+    Lista res = vaciaL();
+
+    while(i > 0){
+        agregarAlFinalL( res ,i*i );
+        i--;
+    }
+    return res;
+}
+
+Lista cuentaRegresiva(int i){
+    Lista res = vaciaL();
+
+    while(i > 0){
+        agregarAlFinalL( res ,i );
+        i--;
+    }
+    return res;
 
 }
+
+Lista contarHasta(int i){
+    Lista res = vaciaL();
+
+    while(i > 0){
+        agregarAlPrincipio( res ,i );
+        i--;
+    }
+    return res;
+}
+
+Lista replicar(int repit, Elem e){
+    Lista res    = vaciaL();
+    while(repit > res->sise ){
+        agregarAlPrincipio( res ,e );
+    }
+    return res;
+
+}
+
+Lista takeN(int corte, Lista ls){
+    Lista res = vaciaL();
+    Nodo* punteroNodo = ls->primero;
+    if(ls->primero == NULL){
+        return ls;
+    }
+    else{
+        while(res->sise < corte){
+            agregarAlPrincipio(res, punteroNodo->valor);
+            punteroNodo = punteroNodo->siguiente;
+        }
+    }
+    return res;
+}
+
+Lista dropN(int corte, Lista ls){
+    Lista res = vaciaL();
+    Nodo* punteroNodo = ls->primero;
+    if(corte <= 0){
+        return ls;
+    }
+    else{
+        while(  corte != 0){
+            agregarAlPrincipio(res, punteroNodo->valor);
+            punteroNodo = punteroNodo->siguiente;
+            corte--;
+        }
+    }
+    return res;
+
+}
+
+
+
+
+
+
+
